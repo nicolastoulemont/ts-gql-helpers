@@ -26,11 +26,11 @@ interface OtherObject extends {
   __typename: 'OtherObject'
 }
 
-isType(object,'Object'):boolean
+isType(object,'__typenameValue'):boolean
 
 // Usage
 // type object = Object | OtherObject
-if(isType(object,'Object')) {
+if(isType(object, 'Object')) {
   // object.name will be infered as valid
 }
 
@@ -47,7 +47,7 @@ interface OtherObject extends {
   title: 'other object',
   __typename: 'OtherObject'
 }
-// typeof Tuple = Array<Object | OtherObject>
+// type tuple = Array<Object | OtherObject>
 const typedArrayOfObject = tuple.filter(isTypeInTuple('Object'))
 const typedArrayfOtherObject = tuple.filter(isTypeInTuple('OtherObject'))
 
@@ -73,11 +73,11 @@ interface OtherObject extends {
    name: 'other object',
   __typename: 'OtherObject'
 }
-interface AnOtherObject extends {
+interface AnotherObject extends {
    title: 'another object',
-  __typename: 'AnOtherObject'
+  __typename: 'AnotherObject'
 }
-// typeof object = Object | OtherObject | AnOtherObject
+// type object = Object | OtherObject | AnotherObject
 isEither(object, ['Object', 'OtherObject']):boolean
 
 // Usage
@@ -98,11 +98,11 @@ interface OtherObject extends {
    name: 'other object',
   __typename: 'OtherObject'
 }
-interface AnOtherObject extends {
+interface AnotherObject extends {
    title: 'another object',
-  __typename: 'AnOtherObject'
+  __typename: 'AnotherObject'
 }
-// typeof object = Object | OtherObject | AnOtherObject
+// type object = Object | OtherObject | AnotherObject
 isNot(object, ['Object', 'OtherObject']):boolean
 // Usage
 if(isNot(object, ['Object', 'OtherObject'])) {
