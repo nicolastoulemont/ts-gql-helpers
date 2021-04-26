@@ -33,6 +33,24 @@
   },
   "name": "ts-gql-helpers",
   "author": "Nicolas Toulemont",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolastoulemont/ts-gql-helpers.git"
+  },
+  "homepage": "https://github.com/nicolastoulemont/ts-gql-helpers",
+  "keywords": [
+    "GraphQL",
+    "Typescript",
+    "Helper function",
+    "isType",
+    "isNot",
+    "isEither",
+    "isTypeInTuple"
+  ],
+  "description": "Typed GraphQL helpers functions",
+  "bugs": {
+    "url": "https://github.com/nicolastoulemont/ts-gql-helpers/issues"
+  },
   "module": "dist/ts-gql-helpers.esm.js",
   "size-limit": [
     {
