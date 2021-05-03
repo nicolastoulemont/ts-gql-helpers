@@ -1,8 +1,8 @@
-export type TypeNameValueOf<T extends { __typename: string }> = T['__typename'];
+export type ValueOfTypename<T extends { __typename: string }> = T['__typename'];
 
 export function isType<
   Result extends { __typename: string },
-  Typename extends TypeNameValueOf<Result>
+  Typename extends ValueOfTypename<Result>
 >(
   result: Result,
   typename: Typename
@@ -12,7 +12,7 @@ export function isType<
 
 export function isTypeInTuple<
   ResultItem extends { __typename: string },
-  Typename extends TypeNameValueOf<ResultItem>
+  Typename extends ValueOfTypename<ResultItem>
 >(
   typename: Typename
 ): (o: ResultItem) => o is Extract<ResultItem, Record<'__typename', Typename>> {
@@ -25,7 +25,7 @@ export function isTypeInTuple<
 
 export function isEither<
   Result extends { __typename: string },
-  Typename extends TypeNameValueOf<Result>,
+  Typename extends ValueOfTypename<Result>,
   PossibleTypes extends Array<Typename>
 >(
   result: Result,
@@ -37,11 +37,11 @@ export function isEither<
 
 export function isNot<
   Result extends { __typename: string },
-  Typename extends TypeNameValueOf<Result>,
-  PossibleTypes extends Array<Typename>
+  Typename extends ValueOfTypename<Result>,
+  ExcludedTypes extends Array<Typename>
 >(
   result: Result,
-  typenames: PossibleTypes
+  typenames: ExcludedTypes
 ): result is Exclude<Result, { __typename: typeof typenames[number] }> {
   const types = typenames?.filter(type => isType(result, type));
   return types ? types.length === 0 : false;
