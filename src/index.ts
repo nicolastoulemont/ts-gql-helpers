@@ -1,7 +1,8 @@
-export type ValueOfTypename<T extends { __typename: string }> = T['__typename'];
+export type GraphQLResult = { __typename: string };
+export type ValueOfTypename<T extends GraphQLResult> = T['__typename'];
 
 export function isType<
-  Result extends { __typename: string },
+  Result extends GraphQLResult,
   Typename extends ValueOfTypename<Result>
 >(
   result: Result,
@@ -11,7 +12,7 @@ export function isType<
 }
 
 export function isTypeInTuple<
-  ResultItem extends { __typename: string },
+  ResultItem extends GraphQLResult,
   Typename extends ValueOfTypename<ResultItem>
 >(
   typename: Typename
@@ -24,7 +25,7 @@ export function isTypeInTuple<
 }
 
 export function isEither<
-  Result extends { __typename: string },
+  Result extends GraphQLResult,
   Typename extends ValueOfTypename<Result>,
   PossibleTypes extends Array<Typename>
 >(
@@ -36,7 +37,7 @@ export function isEither<
 }
 
 export function isNot<
-  Result extends { __typename: string },
+  Result extends GraphQLResult,
   Typename extends ValueOfTypename<Result>,
   ExcludedTypes extends Array<Typename>
 >(
