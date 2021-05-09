@@ -16,10 +16,10 @@ export function isTypeInTuple<
   Typename extends ValueOfTypename<ResultItem>
 >(
   typename: Typename
-): (o: ResultItem) => o is Extract<ResultItem, Record<'__typename', Typename>> {
+): (o: ResultItem) => o is Extract<ResultItem, { __typename: Typename }> {
   return function(
     resultItem: ResultItem
-  ): resultItem is Extract<ResultItem, Record<'__typename', Typename>> {
+  ): resultItem is Extract<ResultItem, { __typename: Typename }> {
     return isType(resultItem, typename);
   };
 }
